@@ -1,4 +1,6 @@
 class TwipperController < ApplicationController
+  before_action :require_user!
+  
   def index
     client = Twitter::API::Client.new(current_user)
     

@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   helper_method :logged_in?
   
+  def require_user!
+    if !current_user
+      redirect_to '/'
+    end
+  end
+  
   def logged_in?
     !!current_user
   end
