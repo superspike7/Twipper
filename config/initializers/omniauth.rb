@@ -4,6 +4,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     ENV['TWITTER_CLIENT_ID'],
     ENV['TWITTER_CLIENT_SECRET'],
     callback_path: '/auth/twitter2/callback',
-    scope: 'tweet.read users.read bookmark.read offline.access',
+    scope: 'tweet.read users.read bookmark.read offline.access like.read',
   )
 end

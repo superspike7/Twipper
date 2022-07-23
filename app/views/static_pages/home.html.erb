@@ -1,9 +1,9 @@
-<div>
-  <h1 class="font-bold text-4xl">StaticPages#home</h1>
-  <p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="text-center w-full">
+  <h1 class="font-bold text-4xl mb-10">StaticPages#home</h1>
   <%=
     button_to 'login with twitter',
               '/auth/twitter2',
+              class: 'underline text-xl font-semibold',
               method: :post,
               data: {
                 turbo: false,

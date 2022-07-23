@@ -1,9 +1,10 @@
 class TwipperController < ApplicationController
   def index
-    @user = User.find(session[:user_id])
-    client = Twitter::API::Client.new(@user)
+    client = Twitter::API::Client.new(current_user)
     
     @me = client.me
     @my_tweets = client.my_tweets
+    @liked_tweets = client.liked_tweets
+    @bookmarks = client.my_bookmarks
   end
 end

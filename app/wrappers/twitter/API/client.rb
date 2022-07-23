@@ -10,14 +10,35 @@ module Twitter
       end
 
       def me
-        params = { 
-          'user.fields': 'description', 
+        params = {
+          'user.fields': 'description,profile_image_url'
         }
-        send_request(:get, '/2/users/me', params )
+        send_request(:get, '/2/users/me', params)
       end
 
       def my_tweets
-        send_request(:get, "/2/users/#{@user.twitter_id}/tweets")
+        params = {
+          'exclude': 'retweets',
+          'max_results': 50
+        }
+        send_request(:get, "/2/users/#{@user.twitter_id}/tweets", params)
+      end
+
+      def liked_tweets
+        params = {
+          'max_results': 50,
+          'expansions': 'author_id'
+        }
+        send_request(:get, "/2/users/#{@user.twitter_id}/liked_tweets", params)
+      end
+
+      def my_bookmarks
+        params = {
+          'tweet.fields': 'context_annotations,created_at',
+          'expansions': 'author_id',
+          'user.fields': 'profile_image_url'
+        }
+        send_request(:get, "/2/users/#{@user.twitter_id}/bookmarks", params)
       end
 
       private
@@ -28,7 +49,7 @@ module Twitter
           params:,
           headers: { 'Authorization' => "Bearer #{@user.token}" }
         )
-        
+
         response = connection.public_send(http_method, endpoint)
         JSON.parse(response.body)
       end
