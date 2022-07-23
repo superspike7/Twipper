@@ -1,20 +1,64 @@
 <div>
-  <h1 class="font-bold text-4xl">Twipper#index</h1>
-  <pre class="whitespace-pre-wrap">
-    <%= @me %>
-  </pre>
-  
-  <pre class="whitespace-pre-wrap">
-    <%= @my_tweets%>
-  </pre>
-  
-  <pre class="whitespace-pre-wrap">
-    <%= @liked_tweets%>
-  </pre>
-  
-  <pre class="whitespace-pre-wrap">
-    <%= @bookmarks%>
-  </pre>
+  <div class="flex gap-2 mb-2">
+    <img
+      src="<%= @me['profile_image_url'] %>"
+      alt="profile picture"
+      class="rounded-full"
+    />
+    <h1 class="font-semibold text-4xl">@<%= @me['username'] %></h1>
+  </div>
+  <div>
+    <p class="font-light text-2xl"><%= @me['description'] %></p>
+  </div>
 
-  <% console %>
+  <div class="grid grid-cols-3 gap-2 mt-4">
+    <div class="flex flex-col gap-2 p-2">
+      <h3 class="text-2xl font-bold">My tweets (<%= @tweets.count %>)</h3>
+      
+      <ul class="flex flex-col gap-4">
+        <% @tweets.each do |tweet| %>
+          <li>
+            <%= link_to "https://twitter.com/twitter/status/#{tweet["id"]}" do %>
+              <p class="text-xl font-light hover:underline">
+                "<%= tweet["text"] %>"
+              </p>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    
+    <div class="flex flex-col gap-2 p-2">
+      <h3 class="text-2xl font-bold">My liked tweets (<%= @liked_tweets.count %>)</h3>
+      
+      <ul class="flex flex-col gap-4">
+        <% @liked_tweets.each do |tweet| %>
+          <li>
+            <%= link_to "https://twitter.com/twitter/status/#{tweet["id"]}" do %>
+              <p class="text-xl font-light hover:underline">
+                "<%= tweet["text"] %>"
+              </p>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    
+    <div class="flex flex-col gap-2 p-2">
+      <h3 class="text-2xl font-bold">My Bookmarks (<%= @bookmarks.count %>)</h3>
+      
+      <ul class="flex flex-col gap-4">
+        <% @bookmarks.each do |bookmark| %>
+          <li>
+            <%= link_to "https://twitter.com/twitter/status/#{bookmark["id"]}" do %>
+              <p class="text-xl font-light hover:underline">
+                "<%= bookmark["text"] %>"
+              </p>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    
+  </div>
 </div>

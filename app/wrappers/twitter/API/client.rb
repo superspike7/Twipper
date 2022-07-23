@@ -18,7 +18,7 @@ module Twitter
 
       def my_tweets
         params = {
-          'exclude': 'retweets',
+          'exclude': 'retweets,replies',
           'max_results': 50
         }
         send_request(:get, "/2/users/#{@user.twitter_id}/tweets", params)
@@ -51,7 +51,7 @@ module Twitter
         )
 
         response = connection.public_send(http_method, endpoint)
-        JSON.parse(response.body)
+        JSON.parse(response.body)["data"]
       end
     end
   end
