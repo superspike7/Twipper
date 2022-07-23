@@ -225,6 +225,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   debug
+  faraday
   figaro
   importmap-rails
   jbuilder

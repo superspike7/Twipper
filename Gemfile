@@ -24,6 +24,9 @@ gem 'omniauth'
 gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-twitter2'
 
+# rest client
+gem 'faraday' 
+
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
 end
