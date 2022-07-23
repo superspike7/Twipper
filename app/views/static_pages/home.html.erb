@@ -1,9 +1,12 @@
 <div class="text-center w-full">
-  <h1 class="font-bold text-4xl mb-10">StaticPages#home</h1>
+  <h1 class="font-bold text-4xl mb-2">Welcome To Twipper</h1>
+  <h2 class="font-light text-2xl mb-10">
+    A site that lets you see your twitter info in one summary
+  </h2>
   <%=
     button_to 'login with twitter',
               '/auth/twitter2',
-              class: 'underline text-xl font-semibold',
+              class: 'underline text-3xl font-semibold text-blue-500',
               method: :post,
               data: {
                 turbo: false,
